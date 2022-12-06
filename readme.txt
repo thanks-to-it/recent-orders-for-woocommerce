@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder
 Tags: woocommerce, order, orders, recent orders, woo commerce
 Requires at least: 5.0
 Tested up to: 6.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,12 +11,11 @@ Display customer's recent orders list on frontend in WooCommerce.
 
 == Description ==
 
-**Recent Orders Widget for WooCommerce** plugin lets you display customer's recent orders list on frontend.
+**Recent Orders Widget for WooCommerce** plugin lets you display current customer's recent orders list on frontend.
 
-= More =
+### &#128472; Feedback ###
 
-* We are open to your suggestions and feedback.
-* Thank you for using or trying out one of our plugins!
+* We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/recent-orders-for-woocommerce/).
 
 == Installation ==
@@ -27,7 +26,7 @@ Display customer's recent orders list on frontend in WooCommerce.
 
 == Changelog ==
 
-= 1.3.1 - 11/11/2022 =
+= 1.3.1 - 06/12/2022 =
 * Tested up to: 6.1.
 * WC tested up to: 7.1.
 * Readme.txt updated.
