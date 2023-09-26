@@ -3,12 +3,12 @@
 Plugin Name: Recent Orders Widget for WooCommerce
 Plugin URI: https://wpfactory.com/item/recent-orders-for-woocommerce/
 Description: Display current customer's recent orders list on frontend in WooCommerce.
-Version: 1.3.2
+Version: 1.3.3
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: recent-orders-widget-for-woocommerce
 Domain Path: /langs
-WC tested up to: 7.8
+WC tested up to: 8.1
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,7 +29,7 @@ if ( 'recent-orders-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
-defined( 'ALG_WC_RECENT_ORDERS_VERSION' ) || define( 'ALG_WC_RECENT_ORDERS_VERSION', '1.3.2' );
+defined( 'ALG_WC_RECENT_ORDERS_VERSION' ) || define( 'ALG_WC_RECENT_ORDERS_VERSION', '1.3.3' );
 
 defined( 'ALG_WC_RECENT_ORDERS_FILE' ) || define( 'ALG_WC_RECENT_ORDERS_FILE', __FILE__ );
 
