@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
 Tags: woocommerce, order, orders, recent orders, woo commerce
 Requires at least: 5.0
-Tested up to: 6.3
-Stable tag: 1.3.3
+Tested up to: 6.6
+Stable tag: 1.3.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,6 +25,10 @@ Display customer's recent orders list on frontend in WooCommerce.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Recent Orders".
 
 == Changelog ==
+
+= 1.3.4 - 31/07/2024 =
+* WC tested up to: 9.1.
+* Tested up to: 6.6.
 
 = 1.3.3 - 26/09/2023 =
 * WC tested up to: 8.1.
