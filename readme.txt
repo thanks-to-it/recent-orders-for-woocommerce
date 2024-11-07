@@ -1,9 +1,9 @@
-=== Recent Orders Widget for WooCommerce ===
-Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
+=== Customer Recent Orders History for WooCommerce ===
+Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas
 Tags: woocommerce, order, orders, recent orders, woo commerce
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 1.3.4
+Stable tag: 1.4.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,13 +18,30 @@ Display customer's recent orders list on frontend in WooCommerce.
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/recent-orders-for-woocommerce/).
 
+### &#8505; More ###
+
+* The plugin is **"High-Performance Order Storage (HPOS)"** compatible.
+
 == Installation ==
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Start by visiting plugin settings at "WooCommerce > Settings > Recent Orders".
+3. Start by visiting plugin settings at "WPFactory > Recent Orders".
 
 == Changelog ==
+
+= 1.4.0 - 07/11/2024 =
+* Dev - Plugin settings moved to the "WPFactory" menu.
+* Dev - "Recommendations" added.
+* Dev - "Key Manager" added.
+* Dev - "High-Performance Order Storage (HPOS)" compatibility.
+* Dev - PHP 8.2 compatibility - "Creation of dynamic property is deprecated" notice fixed.
+* Dev - Admin settings descriptions updated.
+* Dev - Code refactoring and cleanup.
+* WC tested up to: 9.3.
+* Tested up to: 6.6.
+* `woocommerce` added to the "Requires Plugins" (plugin header).
+* Plugin name updated.
 
 = 1.3.4 - 31/07/2024 =
 * WC tested up to: 9.1.
@@ -33,15 +50,15 @@ Display customer's recent orders list on frontend in WooCommerce.
 = 1.3.3 - 26/09/2023 =
 * WC tested up to: 8.1.
 * Tested up to: 6.3.
-* Update plugin icon, banner
+* Plugin icon, banner updated.
 
 = 1.3.2 - 19/06/2023 =
 * WC tested up to: 7.8.
 * Tested up to: 6.2.
 
 = 1.3.1 - 06/12/2022 =
-* Tested up to: 6.1.
 * WC tested up to: 7.1.
+* Tested up to: 6.1.
 * Readme.txt updated.
 * Deploy script added.
 
@@ -50,7 +67,7 @@ Display customer's recent orders list on frontend in WooCommerce.
 * Dev - "Each order product" option added.
 * Dev - Shortcodes are now processed in the output.
 * Dev - Transients - Better transient name: including `$args` hash now.
-* Dev - Developers - Filters and actions added, e.g. `alg_wc_recent_orders_output`.
+* Dev - Developers - Filters and actions added, e.g., `alg_wc_recent_orders_output`.
 
 = 1.2.2 - 20/12/2021 =
 * Dev - "Escaping late" now.

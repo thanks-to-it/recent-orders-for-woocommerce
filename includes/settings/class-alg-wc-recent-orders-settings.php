@@ -2,13 +2,13 @@
 /**
  * Recent Orders Widget for WooCommerce - Settings
  *
- * @version 1.2.1
+ * @version 1.4.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Alg_WC_Recent_Orders_Settings' ) ) :
 
@@ -17,16 +17,19 @@ class Alg_WC_Recent_Orders_Settings extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.2.0
+	 * @version 1.4.0
 	 * @since   1.0.0
 	 */
 	function __construct() {
+
 		$this->id    = 'alg_wc_recent_orders';
 		$this->label = __( 'Recent Orders', 'recent-orders-widget-for-woocommerce' );
 		parent::__construct();
+
 		// Sections
-		require_once( 'class-alg-wc-recent-orders-settings-section.php' );
-		require_once( 'class-alg-wc-recent-orders-settings-general.php' );
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-recent-orders-settings-section.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-recent-orders-settings-general.php';
+
 	}
 
 	/**
@@ -85,7 +88,8 @@ class Alg_WC_Recent_Orders_Settings extends WC_Settings_Page {
 	 */
 	function admin_notices_settings_reset_success() {
 		echo '<div class="notice notice-success is-dismissible"><p><strong>' .
-			esc_html__( 'Your settings have been reset.', 'recent-orders-widget-for-woocommerce' ) . '</strong></p></div>';
+			esc_html__( 'Your settings have been reset.', 'recent-orders-widget-for-woocommerce' ) .
+		'</strong></p></div>';
 	}
 
 	/**

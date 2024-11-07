@@ -2,13 +2,13 @@
 /**
  * Recent Orders Widget for WooCommerce - Core Class
  *
- * @version 1.3.0
+ * @version 1.4.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Alg_WC_Recent_Orders_Core' ) ) :
 
@@ -20,25 +20,28 @@ class Alg_WC_Recent_Orders_Core {
 	 * @version 1.2.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [maybe] (feature) block
+	 * @todo    (feature) block
 	 */
 	function __construct() {
+
 		if ( 'yes' === get_option( 'alg_wc_recent_orders_plugin_enabled', 'yes' ) ) {
 			add_shortcode( 'alg_wc_recent_orders', array( $this, 'recent_orders' ) );
 			add_action( 'widgets_init', array( $this, 'register_widget' ) );
 		}
+
 		// Core loaded
 		do_action( 'alg_wc_recent_orders_core_loaded' );
+
 	}
 
 	/**
-	 * register Alg_WC_Recent_Orders_Widget widget.
+	 * Register Alg_WC_Recent_Orders_Widget widget.
 	 *
-	 * @version 1.2.0
+	 * @version 1.4.0
 	 * @since   1.2.0
 	 */
 	function register_widget() {
-		require_once( 'class-alg-wc-recent-orders-widget.php' );
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-recent-orders-widget.php';
 		register_widget( 'Alg_WC_Recent_Orders_Widget' );
 	}
 
@@ -52,13 +55,29 @@ class Alg_WC_Recent_Orders_Core {
 		return array(
 			'limit'             => get_option( 'alg_wc_recent_orders_limit', 5 ),
 			'template_before'   => get_option( 'alg_wc_recent_orders_template_before',
-				'<p>' . sprintf( __( 'Hello %s', 'recent-orders-widget-for-woocommerce' ), '<a href="%my_account_url%">%user_display_name%</a>' ) . '</p>' . PHP_EOL . '<table>' ),
+				'<p>' . sprintf(
+					__( 'Hello %s', 'recent-orders-widget-for-woocommerce' ),
+					'<a href="%my_account_url%">%user_display_name%</a>'
+				) . '</p>' . PHP_EOL .
+				'<table>'
+			),
 			'template_row'      => get_option( 'alg_wc_recent_orders_template_row',
 				'<tr><td><a href="%order_url%">#%order_number%</a></td><td>%order_date%</td><td>%order_total%</td><td>%order_again_button%</td></tr>' ),
 			'template_after'    => get_option( 'alg_wc_recent_orders_template_after',
-				'</table>' . PHP_EOL . '<p><a class="button" href="%orders_url%">' . __( 'View more', 'recent-orders-widget-for-woocommerce' ) . '</a></p>' ),
+				'</table>' . PHP_EOL .
+				'<p><a class="button" href="%orders_url%">' .
+					__( 'View more', 'recent-orders-widget-for-woocommerce' ) .
+				'</a></p>'
+			),
 			'template_guest'    => get_option( 'alg_wc_recent_orders_template_guest',
-				'<p>' . sprintf( __( 'Please %slog in%s to view your recent orders.', 'recent-orders-widget-for-woocommerce' ), '<a href="%login_url%">', '</a>' ) . '</p>' ),
+				'<p>' .
+					sprintf(
+						__( 'Please %slog in%s to view your recent orders.', 'recent-orders-widget-for-woocommerce' ),
+						'<a href="%login_url%">',
+						'</a>'
+					) .
+				'</p>'
+			),
 			'order_date_format' => get_option( 'alg_wc_recent_orders_order_date_format', get_option( 'date_format' ) ),
 		);
 	}
@@ -69,7 +88,7 @@ class Alg_WC_Recent_Orders_Core {
 	 * @version 1.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [later] (dev) more statuses, i.e. `woocommerce_valid_order_statuses_for_order_again` (now `completed` only)
+	 * @todo    (dev) more statuses, i.e., `woocommerce_valid_order_statuses_for_order_again` (now `completed` only)
 	 */
 	function get_order_again_button( $order ) {
 		ob_start();
@@ -83,9 +102,9 @@ class Alg_WC_Recent_Orders_Core {
 	 * @version 1.2.0
 	 * @since   1.2.0
 	 *
-	 * @todo    [next] (feature) check `WC_Order` functions for more placeholders
-	 * @todo    [maybe] (feature) `%order_add_to_cart%`: multiple "add to cart", i.e. similar to `%order_again_button%`
-	 * @todo    [maybe] (feature) `%order_product_count%`
+	 * @todo    (feature) check `WC_Order` functions for more placeholders
+	 * @todo    (feature) `%order_add_to_cart%`: multiple "add to cart", i.e., similar to `%order_again_button%`
+	 * @todo    (feature) `%order_product_count%`
 	 */
 	function get_order_placeholders( $order, $args ) {
 		return array(
@@ -105,7 +124,7 @@ class Alg_WC_Recent_Orders_Core {
 	 * @version 1.2.0
 	 * @since   1.2.0
 	 *
-	 * @todo    [next] (feature) check `WC_User` for more placeholders
+	 * @todo    (feature) check `WC_User` for more placeholders
 	 */
 	function get_general_placeholders() {
 		$user = wp_get_current_user();
@@ -147,7 +166,7 @@ class Alg_WC_Recent_Orders_Core {
 	 * @version 1.2.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) transients: to `$atts`
+	 * @todo    (dev) transients: to `$atts`
 	 */
 	function recent_orders( $atts, $content = '' ) {
 		$atts = shortcode_atts( $this->get_options(), $atts, 'alg_wc_recent_orders' );
@@ -162,8 +181,8 @@ class Alg_WC_Recent_Orders_Core {
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
 	 *
-	 * @todo    [next] (dev) transients: to `$args`
-	 * @todo    [next] (dev) transients: delete on new order (just for the order's user)
+	 * @todo    (dev) transients: to `$args`
+	 * @todo    (dev) transients: delete on new order (just for the order's user)
 	 */
 	function get_recent_orders( $args = false ) {
 		if ( ! $args ) {

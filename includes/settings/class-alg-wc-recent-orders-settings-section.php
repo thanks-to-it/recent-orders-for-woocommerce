@@ -2,17 +2,33 @@
 /**
  * Recent Orders Widget for WooCommerce - Section Settings
  *
- * @version 1.0.0
+ * @version 1.4.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Alg_WC_Recent_Orders_Settings_Section' ) ) :
 
 class Alg_WC_Recent_Orders_Settings_Section {
+
+	/**
+	 * id.
+	 *
+	 * @version 1.4.0
+	 * @since   1.4.0
+	 */
+	public $id;
+
+	/**
+	 * desc.
+	 *
+	 * @version 1.4.0
+	 * @since   1.4.0
+	 */
+	public $desc;
 
 	/**
 	 * Constructor.
