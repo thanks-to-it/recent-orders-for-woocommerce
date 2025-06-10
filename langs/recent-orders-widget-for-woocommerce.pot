@@ -1,18 +1,59 @@
-#: includes/class-alg-wc-recent-orders-core.php:59
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:104
-#, php-format
+# Copyright (C) 2025 Algoritmika Ltd
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Customer Recent Orders History for WooCommerce 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/recent-orders-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-06-10T14:51:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: recent-orders-widget-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: recent-orders-for-woocommerce.php
+msgid "Customer Recent Orders History for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: recent-orders-for-woocommerce.php
+msgid "https://wordpress.org/plugins/recent-orders-widget-for-woocommerce/"
+msgstr ""
+
+#. Description of the plugin
+#: recent-orders-for-woocommerce.php
+msgid "Display the customer's recent order list on the frontend in WooCommerce."
+msgstr ""
+
+#. Author of the plugin
+#: recent-orders-for-woocommerce.php
+msgid "Algoritmika Ltd"
+msgstr ""
+
+#. Author URI of the plugin
+#: recent-orders-for-woocommerce.php
+msgid "https://profiles.wordpress.org/algoritmika/"
+msgstr ""
+
+#. Translators: %s: Link.
+#: includes/class-alg-wc-recent-orders-core.php:151
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:103
 msgid "Hello %s"
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders-core.php:69
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:167
+#: includes/class-alg-wc-recent-orders-core.php:163
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:163
 msgid "View more"
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders-core.php:75
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:180
-#, php-format
-msgid "Please %slog in%s to view your recent orders."
+#. Translators: %1$s: Hyperlink tag start, %2$s: Hyperlink tag end.
+#: includes/class-alg-wc-recent-orders-core.php:170
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:178
+msgid "Please %1$slog in%2$s to view your recent orders."
 msgstr ""
 
 #: includes/class-alg-wc-recent-orders-widget.php:26
@@ -20,28 +61,25 @@ msgid "Display customer's recent orders list."
 msgstr ""
 
 #: includes/class-alg-wc-recent-orders-widget.php:30
-#: includes/class-alg-wc-recent-orders.php:230
-#: includes/class-alg-wc-recent-orders.php:231
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:59
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:78
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:61
 #: includes/settings/class-alg-wc-recent-orders-settings.php:26
 msgid "Recent Orders"
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders-widget.php:70
+#: includes/class-alg-wc-recent-orders-widget.php:72
 msgid "Title"
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders-widget.php:150
-#, php-format
+#. Translators: %s: Settings page link.
+#: includes/class-alg-wc-recent-orders-widget.php:153
 msgid "Set options in %s."
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders-widget.php:152
-msgid "WPFactory > Recent Orders"
+#: includes/class-alg-wc-recent-orders-widget.php:155
+msgid "WooCommerce > Settings > Recent Orders"
 msgstr ""
 
-#: includes/class-alg-wc-recent-orders.php:182
+#: includes/class-alg-wc-recent-orders.php:172
 msgid "Settings"
 msgstr ""
 
@@ -49,61 +87,54 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:37
-#, php-format
+#. Translators: %s: Placeholder list.
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:38
 msgid "Available placeholders: %s."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:55
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:56
 msgid "Recent Orders Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:58
-#, php-format
-msgid ""
-"Recent orders can be outputted with the %s widget, or with the %s shortcode."
+#. Translators: %1$s: Widget link, %2$s: Shortcode name.
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:60
+msgid "Recent orders can be outputted with the %1$s widget, or with the %2$s shortcode."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:63
-#, php-format
-msgid ""
-"You can also optionally override the default option values with %s shortcode "
-"attributes."
+#. Translators: %s: Attribute list.
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:66
+msgid "You can also optionally override the default option values with %s shortcode attributes."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:79
-msgid "Enable plugin"
-msgstr ""
-
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:85
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:82
 msgid "Limit"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:86
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:83
 msgid "Number of recent orders to display."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:93
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:90
 msgid "Before"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:95
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:92
 msgid "Outputted before the recent orders results."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:96
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:114
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:93
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:113
 #: includes/settings/class-alg-wc-recent-orders-settings-general.php:134
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:158
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:176
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:153
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:172
 msgid "You can use shortcodes here."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:111
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:110
 msgid "Each order"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:113
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:112
 msgid "Outputted for each result, i.e., for each recent order."
 msgstr ""
 
@@ -119,19 +150,19 @@ msgstr ""
 msgid "Duplicated products are skipped."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:155
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:150
 msgid "After"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:157
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:152
 msgid "Outputted after the recent orders results."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:173
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:169
 msgid "Guest"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:175
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:171
 msgid "Outputted for non-logged users."
 msgstr ""
 
@@ -139,56 +170,56 @@ msgstr ""
 msgid "Order date format"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:190
-#, php-format
+#. Translators: %s: Placeholder name.
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:191
 msgid "For the %s placeholder."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:194
-#, php-format
+#. Translators: %s: Page link.
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:196
 msgid "Check PHP %s function page for the available date formats."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:202
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:205
 msgid "Order statuses"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:203
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:206
 msgid "Leave empty to display all order statuses."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:221
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:219
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:226
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:224
 msgid "Transients"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:227
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:225
 msgid "Enable"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings-general.php:233
+#: includes/settings/class-alg-wc-recent-orders-settings-general.php:231
 msgid "Time until expiration in seconds"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings.php:45
+#: includes/settings/class-alg-wc-recent-orders-settings.php:47
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings.php:50
+#: includes/settings/class-alg-wc-recent-orders-settings.php:52
 msgid "Reset section settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings.php:51
+#: includes/settings/class-alg-wc-recent-orders-settings.php:53
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings.php:52
+#: includes/settings/class-alg-wc-recent-orders-settings.php:54
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-recent-orders-settings.php:91
+#: includes/settings/class-alg-wc-recent-orders-settings.php:98
 msgid "Your settings have been reset."
 msgstr ""

@@ -2,7 +2,7 @@
 /**
  * Recent Orders Widget for WooCommerce - Core Class
  *
- * @version 1.4.0
+ * @version 2.0.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd
@@ -15,23 +15,113 @@ if ( ! class_exists( 'Alg_WC_Recent_Orders_Core' ) ) :
 class Alg_WC_Recent_Orders_Core {
 
 	/**
+	 * products.
+	 *
+	 * @version 1.4.0
+	 * @since   1.4.0
+	 */
+	public $products;
+
+	/**
 	 * Constructor.
 	 *
-	 * @version 1.2.0
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (feature) block
+	 * @todo    (v2.0.0) code refactoring: remove hooks: `alg_wc_recent_orders_query_args`, `shortcode_atts_alg_wc_recent_orders`, `alg_wc_recent_orders_row`
 	 */
 	function __construct() {
 
-		if ( 'yes' === get_option( 'alg_wc_recent_orders_plugin_enabled', 'yes' ) ) {
-			add_shortcode( 'alg_wc_recent_orders', array( $this, 'recent_orders' ) );
-			add_action( 'widgets_init', array( $this, 'register_widget' ) );
-		}
+		// Shortcode
+		add_shortcode( 'alg_wc_recent_orders', array( $this, 'recent_orders' ) );
+
+		// Hooks
+		add_filter( 'alg_wc_recent_orders_query_args', array( $this, 'query_args' ), 10, 2 );
+		add_filter( 'shortcode_atts_alg_wc_recent_orders', array( $this, 'shortcode_atts' ), 10, 3 );
+		add_filter( 'alg_wc_recent_orders_row', array( $this, 'add_order_products' ), 10, 3 );
+		add_action( 'widgets_init', array( $this, 'register_widget' ) );
 
 		// Core loaded
 		do_action( 'alg_wc_recent_orders_core_loaded' );
 
+	}
+
+	/**
+	 * add_order_products.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 */
+	function add_order_products( $rows, $order, $args ) {
+		if ( ! empty( $args['template_order_item_row'] ) ) {
+			foreach ( $order->get_items() as $item ) {
+				if (
+					is_a( $item, 'WC_Order_Item_Product' ) &&
+					( $product = $item->get_product() ) &&
+					! in_array( $product->get_id(), $this->products )
+				) {
+					$this->products[] = $product->get_id();
+					$placeholders     = $this->get_order_product_placeholders( $product );
+					$rows            .= str_replace(
+						array_keys( $placeholders ),
+						$placeholders,
+						$args['template_order_item_row']
+					);
+				}
+			}
+		}
+		return $rows;
+	}
+
+	/**
+	 * get_order_product_placeholders.
+	 *
+	 * @version 1.3.0
+	 * @since   1.3.0
+	 */
+	function get_order_product_placeholders( $product ) {
+		return array(
+			'%product_id%'              => $product->get_id(),
+			'%product_url%'             => $product->get_permalink(),
+			'%product_title%'           => $product->get_title(),
+			'%product_add_to_cart_url%' => $product->add_to_cart_url(),
+			'%product_price%'           => $product->get_price_html(),
+			'%product_image%'           => $product->get_image(),
+		);
+	}
+
+	/**
+	 * shortcode_atts.
+	 *
+	 * @version 1.4.0
+	 * @since   1.2.0
+	 *
+	 * @todo    (dev) add `alg_wc_recent_orders_option` filter (then e.g., we can use function instead of the shortcode in the widget)
+	 */
+	function shortcode_atts( $out, $default_atts, $atts ) {
+		$out['order_statuses']          = ( $atts['order_statuses']          ?? get_option( 'alg_wc_recent_orders_order_statuses', array() ) );
+		$out['template_order_item_row'] = ( $atts['template_order_item_row'] ?? get_option( 'alg_wc_recent_orders_template_order_item_row', '' ) );
+		return $out;
+	}
+
+	/**
+	 * query_args.
+	 *
+	 * @version 1.2.0
+	 * @since   1.2.0
+	 *
+	 * @todo    (feature) check `wc_get_orders()` function for more options, e.g., `type` (`shop_order_refund`), or `payment_method`, etc.
+	 */
+	function query_args( $query_args, $args ) {
+		if ( ! empty( $args['order_statuses'] ) ) {
+			$query_args['status'] = (
+				is_array( $args['order_statuses'] ) ?
+				$args['order_statuses'] :
+				array_map( 'trim', explode( ',', $args['order_statuses'] ) )
+			);
+		}
+		return $query_args;
 	}
 
 	/**
@@ -48,21 +138,25 @@ class Alg_WC_Recent_Orders_Core {
 	/**
 	 * get_options.
 	 *
-	 * @version 1.2.0
+	 * @version 2.0.0
 	 * @since   1.2.0
 	 */
 	function get_options() {
 		return array(
 			'limit'             => get_option( 'alg_wc_recent_orders_limit', 5 ),
 			'template_before'   => get_option( 'alg_wc_recent_orders_template_before',
-				'<p>' . sprintf(
-					__( 'Hello %s', 'recent-orders-widget-for-woocommerce' ),
-					'<a href="%my_account_url%">%user_display_name%</a>'
-				) . '</p>' . PHP_EOL .
+				'<p>' .
+					sprintf(
+						/* Translators: %s: Link. */
+						__( 'Hello %s', 'recent-orders-widget-for-woocommerce' ),
+						'<a href="%my_account_url%">%user_display_name%</a>'
+					) .
+				'</p>' . PHP_EOL .
 				'<table>'
 			),
 			'template_row'      => get_option( 'alg_wc_recent_orders_template_row',
-				'<tr><td><a href="%order_url%">#%order_number%</a></td><td>%order_date%</td><td>%order_total%</td><td>%order_again_button%</td></tr>' ),
+				'<tr><td><a href="%order_url%">#%order_number%</a></td><td>%order_date%</td><td>%order_total%</td><td>%order_again_button%</td></tr>'
+			),
 			'template_after'    => get_option( 'alg_wc_recent_orders_template_after',
 				'</table>' . PHP_EOL .
 				'<p><a class="button" href="%orders_url%">' .
@@ -72,13 +166,16 @@ class Alg_WC_Recent_Orders_Core {
 			'template_guest'    => get_option( 'alg_wc_recent_orders_template_guest',
 				'<p>' .
 					sprintf(
-						__( 'Please %slog in%s to view your recent orders.', 'recent-orders-widget-for-woocommerce' ),
+						/* Translators: %1$s: Hyperlink tag start, %2$s: Hyperlink tag end. */
+						__( 'Please %1$slog in%2$s to view your recent orders.', 'recent-orders-widget-for-woocommerce' ),
 						'<a href="%login_url%">',
 						'</a>'
 					) .
 				'</p>'
 			),
-			'order_date_format' => get_option( 'alg_wc_recent_orders_order_date_format', get_option( 'date_format' ) ),
+			'order_date_format' => get_option( 'alg_wc_recent_orders_order_date_format',
+				get_option( 'date_format' )
+			),
 		);
 	}
 
@@ -163,14 +260,14 @@ class Alg_WC_Recent_Orders_Core {
 	/**
 	 * recent_orders.
 	 *
-	 * @version 1.2.0
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) transients: to `$atts`
 	 */
 	function recent_orders( $atts, $content = '' ) {
 		$atts = shortcode_atts( $this->get_options(), $atts, 'alg_wc_recent_orders' );
-		return $this->get_recent_orders( $atts );
+		return wp_kses_post( $this->get_recent_orders( $atts ) );
 	}
 
 	/**
@@ -185,48 +282,84 @@ class Alg_WC_Recent_Orders_Core {
 	 * @todo    (dev) transients: delete on new order (just for the order's user)
 	 */
 	function get_recent_orders( $args = false ) {
+
 		if ( ! $args ) {
 			$args = $this->get_options();
 		}
+
 		if ( $user_id = get_current_user_id() ) {
+
 			$use_transients = ( 'yes' === get_option( 'alg_wc_recent_orders_use_transients', 'no' ) );
 			if ( $use_transients ) {
-				if ( false !== ( $transient = get_transient( 'alg_wc_recent_orders_user_' . $user_id . '_' . md5( serialize( $args ) ) ) ) ) {
+				$transient_name = 'alg_wc_recent_orders_user_' . $user_id . '_' . md5( serialize( $args ) );
+				if ( false !== ( $transient = get_transient( $transient_name ) ) ) {
 					return $transient;
 				}
 			}
+
 			do_action( 'alg_wc_recent_orders_before' );
-			$output = '';
-			$rows   = '';
-			$orders = wc_get_orders(
-				apply_filters( 'alg_wc_recent_orders_query_args', array(
-					'limit'    => $args['limit'],
-					'customer' => $user_id,
-					'type'     => 'shop_order',
-					'orderby'  => 'ID',
-					'order'    => 'DESC',
-				), $args )
+
+			$this->products = array();
+			$output         = '';
+			$rows           = '';
+			$orders         = wc_get_orders(
+				apply_filters(
+					'alg_wc_recent_orders_query_args',
+					array(
+						'limit'    => $args['limit'],
+						'customer' => $user_id,
+						'type'     => 'shop_order',
+						'orderby'  => 'ID',
+						'order'    => 'DESC',
+					),
+					$args
+				)
 			);
+
 			foreach ( $orders as $order ) {
 				$placeholders  = $this->get_order_placeholders( $order, $args );
-				$rows         .= str_replace( array_keys( $placeholders ), $placeholders, $args['template_row'] );
+				$rows         .= str_replace(
+					array_keys( $placeholders ),
+					$placeholders,
+					$args['template_row']
+				);
 				$rows          = apply_filters( 'alg_wc_recent_orders_row', $rows, $order, $args );
 			}
+
 			if ( ! empty( $rows ) ) {
 				$placeholders = $this->get_general_placeholders();
-				$before       = str_replace( array_keys( $placeholders ), $placeholders, $args['template_before'] );
-				$after        = str_replace( array_keys( $placeholders ), $placeholders, $args['template_after'] );
+				$before       = str_replace(
+					array_keys( $placeholders ),
+					$placeholders,
+					$args['template_before']
+				);
+				$after        = str_replace(
+					array_keys( $placeholders ),
+					$placeholders,
+					$args['template_after']
+				);
 				$output       = $this->do_shortcode( $before . $rows . $after );
 			}
+
 			if ( $use_transients ) {
 				$transient_expiration = get_option( 'alg_wc_recent_orders_transients_expiration', 3600 );
-				set_transient( 'alg_wc_recent_orders_user_' . $user_id, $output, $transient_expiration );
+				set_transient( $transient_name, $output, $transient_expiration );
 			}
+
 			return apply_filters( 'alg_wc_recent_orders_output', $output );
+
 		} else {
+
 			$placeholders = $this->get_guest_placeholders();
-			return $this->do_shortcode( str_replace( array_keys( $placeholders ), $placeholders, $args['template_guest'] ) );
+
+			return $this->do_shortcode(
+				str_replace( array_keys( $placeholders ),
+				$placeholders,
+				$args['template_guest'] )
+			);
+
 		}
+
 	}
 
 }

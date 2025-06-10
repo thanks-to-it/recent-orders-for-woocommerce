@@ -1,15 +1,18 @@
 <?php
 /*
 Plugin Name: Customer Recent Orders History for WooCommerce
-Plugin URI: https://wpfactory.com/item/recent-orders-for-woocommerce/
-Description: Display current customer's recent orders list on frontend in WooCommerce.
-Version: 1.4.0
-Author: WPFactory
-Author URI: https://wpfactory.com
+Plugin URI: https://wordpress.org/plugins/recent-orders-widget-for-woocommerce/
+Description: Display the customer's recent order list on the frontend in WooCommerce.
+Version: 2.0.0
+Author: Algoritmika Ltd
+Author URI: https://profiles.wordpress.org/algoritmika/
+Requires at least: 5.0
 Text Domain: recent-orders-widget-for-woocommerce
 Domain Path: /langs
-WC tested up to: 9.3
+WC tested up to: 9.8
 Requires Plugins: woocommerce
+License: GNU General Public License v3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,7 +34,7 @@ if ( 'recent-orders-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
-defined( 'ALG_WC_RECENT_ORDERS_VERSION' ) || define( 'ALG_WC_RECENT_ORDERS_VERSION', '1.4.0' );
+defined( 'ALG_WC_RECENT_ORDERS_VERSION' ) || define( 'ALG_WC_RECENT_ORDERS_VERSION', '2.0.0' );
 
 defined( 'ALG_WC_RECENT_ORDERS_FILE' ) || define( 'ALG_WC_RECENT_ORDERS_FILE', __FILE__ );
 

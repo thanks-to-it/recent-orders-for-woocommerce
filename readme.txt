@@ -1,34 +1,72 @@
 === Customer Recent Orders History for WooCommerce ===
-Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas
+Contributors: algoritmika, thankstoit, anbinder, karzin
 Tags: woocommerce, order, orders, recent orders, woo commerce
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 1.4.0
+Tested up to: 6.8
+Stable tag: 2.0.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Display customer's recent orders list on frontend in WooCommerce.
+Display the customer's recent order list on the frontend in WooCommerce.
 
 == Description ==
 
-**Recent Orders Widget for WooCommerce** plugin lets you display current customer's recent orders list on frontend.
+Enhance your WooCommerce store with the **Recent Orders Widget for WooCommerce** plugin, offering dynamic displays of recent customer orders, customizable content, and a personalized shopping experience for your customers.
 
-### &#128472; Feedback ###
+### 🚀 Show Recent Orders on Website Frontend ###
 
-* We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
-* [Visit plugin site](https://wpfactory.com/item/recent-orders-for-woocommerce/).
+This plugin enables you to display a list of customers' recent orders on the frontend of your WooCommerce store.
 
-### &#8505; More ###
+You can show recent orders using the "Recent Orders" widget or the `[alg_wc_recent_orders]` shortcode, providing a dynamic view of recent customer activity directly on your site.
+
+### 🚀 Customizable Orders Display Limit ###
+
+Configure the number of recent orders to display in the widget, while the default setting shows the five most recent orders, but you can adjust this number to suit your preferences.
+
+This feature allows you to control how much of the recent order history is visible to your customers in a glance.
+
+### 🚀 Personalized Section Content ###
+
+Customize the content displayed before the recent orders list. Use available placeholders like `%my_account_url%`, `%orders_url%`, and `%user_display_name%` to add a personalized touch.
+
+For example, greet users by name or provide a link to their account page, enhancing user engagement with a more tailored experience.
+
+### 🚀 Detailed Customization for Each Order Row ###
+
+Fine-tune the display for each order in the list with various placeholders like `%order_number%`, `%order_url%`, and `%order_total%`.
+
+You can also control what appears after the list of recent orders. Use placeholders to provide links for further actions, like viewing more orders.
+
+This level of detail ensures that customers can see key information about their recent purchases at a glance, such as order number, date, total, and status.
+
+### ✅ More ###
 
 * The plugin is **"High-Performance Order Storage (HPOS)"** compatible.
+
+### 🗘 Feedback ###
+
+* We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
+* Head to the plugin [GitHub Repository](https://github.com/thanks-to-it/recent-orders-for-woocommerce) to find out how you can pitch in.
 
 == Installation ==
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the "Plugins" menu in WordPress.
-3. Start by visiting plugin settings at "WPFactory > Recent Orders".
+3. Start by visiting plugin settings at "WooCommerce > Settings > Recent Orders".
 
 == Changelog ==
+
+= 2.0.0 - 10/06/2025 =
+* Fix - "Transients" option fixed.
+* Dev - "Each order product" moved to the free plugin version.
+* Dev - "Order statuses" moved to the free plugin version.
+* Dev - Plugin settings moved back to the "WooCommerce > Settings" menu.
+* Dev - "Recommendations" removed.
+* Dev - "Key Manager" removed.
+* Dev - Security - Output escaped.
+* Dev - Coding standards improved.
+* WC tested up to: 9.8.
+* Tested up to: 6.8.
 
 = 1.4.0 - 07/11/2024 =
 * Dev - Plugin settings moved to the "WPFactory" menu.

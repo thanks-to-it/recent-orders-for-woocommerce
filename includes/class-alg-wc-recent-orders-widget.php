@@ -2,7 +2,7 @@
 /**
  * Recent Orders Widget for WooCommerce - Widget Class
  *
- * @version 1.4.0
+ * @version 2.0.0
  * @since   1.2.0
  *
  * @author  Algoritmika Ltd
@@ -35,14 +35,15 @@ class Alg_WC_Recent_Orders_Widget extends WP_Widget {
 	/**
 	 * Outputs the content of the widget.
 	 *
-	 * @version 1.3.0
+	 * @version 2.0.0
 	 * @since   1.2.0
 	 *
 	 * @param   array $args
 	 * @param   array $instance
 	 */
 	function widget( $args, $instance ) {
-		echo $args['before_widget'] .
+		echo wp_kses_post(
+			$args['before_widget'] .
 				(
 					! empty( $instance['title'] ) ?
 					(
@@ -52,8 +53,9 @@ class Alg_WC_Recent_Orders_Widget extends WP_Widget {
 					) :
 					''
 				) .
-				wp_kses_post( do_shortcode( '[alg_wc_recent_orders]' ) ) .
-			$args['after_widget'];
+				do_shortcode( '[alg_wc_recent_orders]' ) .
+			$args['after_widget']
+		);
 	}
 
 	/**
@@ -76,7 +78,7 @@ class Alg_WC_Recent_Orders_Widget extends WP_Widget {
 	/**
 	 * Outputs the options form on admin.
 	 *
-	 * @version 1.4.0
+	 * @version 2.0.0
 	 * @since   1.2.0
 	 *
 	 * @param   array $instance The widget options
@@ -147,9 +149,10 @@ class Alg_WC_Recent_Orders_Widget extends WP_Widget {
 			$html .= '<p>' . $label . $field . $desc . '</p>';
 		}
 		$html .= '<p>' . sprintf(
+			/* Translators: %s: Settings page link. */
 			esc_html__( 'Set options in %s.', 'recent-orders-widget-for-woocommerce' ),
 			'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_recent_orders' ) . '" target="_blank">' .
-				esc_html__( 'WPFactory > Recent Orders', 'recent-orders-widget-for-woocommerce' ) .
+				esc_html__( 'WooCommerce > Settings > Recent Orders', 'recent-orders-widget-for-woocommerce' ) .
 			'</a>'
 		) . '</p>';
 		echo wp_kses(
